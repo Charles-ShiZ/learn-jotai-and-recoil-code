@@ -1,43 +1,39 @@
-import { useState } from 'react'
+import React, { useState,createContext } from 'react'
+import ReactDOM from 'react-dom'
 import logo from './logo.svg'
 import './App.css'
+import TableGrid from './components/TableGrid'
+import { BrowserRouter, Router, Route, Switch } from 'react-router-dom'
+import { atom, useRecoilState } from 'recoil'
+import Bpp from './Bpp'
+import { RecoilRoot } from 'recoil'
+
+const countAtom = atom({
+  key: 'countAtom',
+  default:1
+})
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [count, setCount] = useRecoilState(countAtom)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => setCount((count) => count + 1)}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Ezdit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {' | '}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
-      </header>
+      {/* <BrowserRouter>
+
+          <Route path="/3">
+            fuck
+          </Route>
+          <Route path="/1">
+            2
+          </Route>
+
+      </BrowserRouter>
+      <TableGrid></TableGrid> */}
+      <RecoilRoot>
+        <Bpp />
+      </RecoilRoot>
+      <button type="button" onClick={() => {setCount(+new Date())}}>
+        count is: {count}
+      </button>
     </div>
   )
 }
