@@ -46,7 +46,7 @@ export default function UseReducerTest() {
   }, undefined, (initialCount) => {
     return {count: initialCount};
   });
-  throw new Promise(res => console.log())
+  // throw new Promise(res => console.log())
   return (
     <>
       {count}
@@ -58,7 +58,7 @@ export default function UseReducerTest() {
         })))
         dispatch(void 0)
         dispatch(void 0)
-      }}>按钮</button>
+      }}>点击我更新jotai</button>
     </>
   );
 }
